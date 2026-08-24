@@ -4,9 +4,6 @@
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Terreno junto al río — Optimización con cálculo</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
   :root{
     --paper: #EDF4F6;
@@ -29,24 +26,19 @@
   *{ box-sizing:border-box; }
   html,body{ margin:0; padding:0; }
   body{
-    background: var(--paper);
-    background-image:
-      linear-gradient(var(--grid-line) 1px, transparent 1px),
-      linear-gradient(90deg, var(--grid-line) 1px, transparent 1px);
-    background-size: 28px 28px;
+    background: linear-gradient(180deg, var(--ink) 0 8px, var(--paper) 8px 100%);
     color: var(--ink);
-    font-family: 'IBM Plex Sans', system-ui, sans-serif;
-    padding: 28px 18px 60px;
+    font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    padding: 30px 18px 60px;
   }
   .wrap{ max-width: 1080px; margin: 0 auto; }
 
-  header{ margin-bottom: 22px; border-left:5px solid var(--gold); padding-left:20px; }
+  header{ margin-bottom: 22px; }
   .institution{
-    margin:0 0 8px; color:var(--river-deep); font-family:'IBM Plex Mono', monospace;
-    font-size:11.5px; font-weight:600; letter-spacing:.11em; text-transform:uppercase;
+    margin:0 0 8px; color:var(--river); font-size:11px; font-weight:800; letter-spacing:.12em; text-transform:uppercase;
   }
   .eyebrow{
-    font-family:'IBM Plex Mono', monospace;
+    font-family:ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
     font-size: 11.5px;
     letter-spacing: .12em;
     color: var(--river-deep);
@@ -58,10 +50,13 @@
     font-weight: 600;
   }
   h1{
-    font-family:'Space Grotesk', sans-serif;
-    font-size: clamp(26px, 4vw, 36px);
+    font-family:inherit;
+    font-size: clamp(22px, 4vw, 32px);
     margin: 0 0 8px;
-    letter-spacing: -.01em;
+    padding-left:16px;
+    border-left:5px solid var(--gold);
+    line-height:1.2;
+    letter-spacing: -.02em;
   }
   .sub{
     color: var(--ink-soft);
@@ -81,12 +76,13 @@
 
   .panel{
     background: var(--panel);
+    border:1px solid #D7E2E7;
     border-radius: var(--radius);
-    box-shadow: var(--shadow);
+    box-shadow: 0 8px 24px rgba(18,50,74,.07);
     padding: 16px 16px 14px;
   }
   .panel h3{
-    font-family:'Space Grotesk', sans-serif;
+    font-family:inherit;
     font-size: 14px;
     margin: 0 0 10px;
     color: var(--ink-soft);
@@ -119,8 +115,9 @@
   @media (max-width: 640px){ .kpis{ grid-template-columns: repeat(2, 1fr); } }
   .kpi{
     background: var(--panel);
+    border:1px solid #D7E2E7;
     border-radius: var(--radius);
-    box-shadow: var(--shadow);
+    box-shadow:none;
     padding: 12px 14px;
     border-left: 4px solid var(--river);
     transition: border-color .25s ease;
@@ -145,8 +142,9 @@
 
   .controls{
     background: var(--panel);
+    border:1px solid #D7E2E7;
     border-radius: var(--radius);
-    box-shadow: var(--shadow);
+    box-shadow:0 8px 24px rgba(18,50,74,.07);
     padding: 16px;
     margin-top: 16px;
     display:flex;
@@ -175,14 +173,14 @@
     outline: 2px solid var(--river); outline-offset: 2px;
   }
   .btn{
-    font-family:'Space Grotesk', sans-serif;
+    font-family:inherit;
     font-weight: 600; font-size: 13.5px;
-    border: 1.5px solid var(--ink);
-    background: var(--ink); color: #fff;
+    border: 1.5px solid var(--river);
+    background: var(--river); color: #fff;
     padding: 9px 16px; border-radius: 9px;
     cursor: pointer;
   }
-  .btn.secondary{ background: transparent; color: var(--ink); }
+  .btn.secondary{ background: transparent; color: var(--river-deep); }
   .btn:focus-visible{ outline: 2px solid var(--river); outline-offset: 2px; }
   .btn:hover{ opacity: .88; }
 
@@ -198,13 +196,14 @@
 
   .derivation{
     background: var(--panel);
+    border:1px solid #D7E2E7;
     border-radius: var(--radius);
-    box-shadow: var(--shadow);
+    box-shadow:0 8px 24px rgba(18,50,74,.07);
     margin-top: 16px;
     padding: 18px 20px 20px;
   }
   .derivation h3{
-    font-family:'Space Grotesk', sans-serif;
+    font-family:inherit;
     font-size: 14px; text-transform: uppercase; letter-spacing:.06em;
     color: var(--ink-soft); margin: 0 0 14px;
   }
