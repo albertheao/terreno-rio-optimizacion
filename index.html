@@ -4,6 +4,8 @@
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Problema de Optimización: Área Máxima</title>
+<script>MathJax={tex:{inlineMath:[['\\(','\\)']],displayMath:[['\\[','\\]']]},svg:{fontCache:'global'}};</script>
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
 <style>
   :root{
     --paper: #EDF4F6;
@@ -243,29 +245,29 @@
       <canvas id="fieldCanvas" width="600" height="465" aria-label="Diagrama del terreno junto al río, arrastrable para cambiar x"></canvas>
     </section>
     <section class="panel">
-      <h3>Área en función de x <span class="tag">A(x) = x(2400 − 2x)</span></h3>
+      <h3>Área en función de \(x\) <span class="tag">\(A(x)=x(2400-2x)\)</span></h3>
       <canvas id="graphCanvas" width="600" height="465" aria-label="Gráfica de A(x) con recta tangente"></canvas>
     </section>
   </div>
 
   <div class="kpis">
     <div class="kpi" id="kpiX">
-      <div class="label">Ancho perpendicular · x</div>
+      <div class="label">Ancho perpendicular · \(x\)</div>
       <div class="value" id="kpiXVal">600 m</div>
       <div class="note">arrastrable en el plano</div>
     </div>
     <div class="kpi" id="kpiL">
-      <div class="label">Largo paralelo al río · L</div>
+      <div class="label">Largo paralelo al río · \(L\)</div>
       <div class="value" id="kpiLVal">1200 m</div>
       <div class="note">L = 2400 − 2x</div>
     </div>
     <div class="kpi" id="kpiA">
-      <div class="label">Área encerrada · A(x)</div>
+      <div class="label">Área encerrada · \(A(x)\)</div>
       <div class="value" id="kpiAVal">720 000 m²</div>
       <div class="note" id="kpiANote">máximo posible</div>
     </div>
     <div class="kpi flat" id="kpiD">
-      <div class="label">Pendiente · A'(x)</div>
+      <div class="label">Pendiente · \(A'(x)\)</div>
       <div class="value" id="kpiDVal">0 m</div>
       <div class="note" id="kpiDNote">¡óptimo! la tangente es horizontal</div>
     </div>
@@ -273,24 +275,24 @@
 
   <div class="controls">
     <div class="slider-block">
-      <label for="xRange">x — ancho perpendicular al río <span class="x-readout"><span id="xVal">600</span> m</span></label>
+      <label for="xRange">\(x\) — ancho perpendicular al río <span class="x-readout"><span id="xVal">600</span> m</span></label>
       <input id="xRange" type="range" min="0" max="1200" step="1" value="600"/>
     </div>
     <input id="xInput" type="number" min="0" max="1200" step="1" value="600" aria-label="Valor exacto de x en metros"/>
-    <button class="btn" id="btnOptimo">Ir al óptimo (x = 600)</button>
+    <button class="btn" id="btnOptimo">Ir al óptimo \(x=600\)</button>
     <button class="btn secondary" id="btnAnimar">▶ Animar barrido</button>
   </div>
   <div class="status-line" id="statusLine">Cerca usada: 2x + L = 2400 m — coincide exactamente con lo disponible.</div>
 
   <div class="derivation">
-    <h3>Cómo se llega a x = 600</h3>
+    <h3>Cómo se llega a \(x=600\)</h3>
     <div class="steps">
-      <div class="step"><div class="n">1</div><div class="txt">Restricción de cerca disponible: <span class="math">2x + L = 2400</span> &nbsp;→&nbsp; <span class="math">L = 2400 − 2x</span></div></div>
-      <div class="step"><div class="n">2</div><div class="txt">Área del terreno: <span class="math">A(x) = x·L = x(2400 − 2x) = 2400x − 2x²</span></div></div>
-      <div class="step"><div class="n">3</div><div class="txt">Derivada respecto a x: <span class="math">A'(x) = 2400 − 4x</span></div></div>
-      <div class="step"><div class="n">4</div><div class="txt">Punto crítico: <span class="math">A'(x) = 0 → 2400 − 4x = 0</span> &nbsp;→&nbsp; <span class="math result">x = 600</span></div></div>
-      <div class="step"><div class="n">5</div><div class="txt">Prueba de la segunda derivada: <span class="math">A''(x) = −4 &lt; 0</span> para todo x, así que la curva es cóncava y x = 600 produce un <strong>máximo global</strong>.</div></div>
-      <div class="conclusion"><strong>Conclusión:</strong> Con <span class="math">x = 600</span>: &nbsp;<span class="math result">L = 1200 m</span> &nbsp;y&nbsp; <span class="math result">A_max = 720 000 m²</span>.</div>
+      <div class="step"><div class="n">1</div><div class="txt">Restricción de cerca disponible: <span class="math">\(2x+L=2400\)</span> &nbsp;→&nbsp; <span class="math">\(L=2400-2x\)</span></div></div>
+      <div class="step"><div class="n">2</div><div class="txt">Área del terreno: <span class="math">\(A(x)=xL=x(2400-2x)=2400x-2x^2\)</span></div></div>
+      <div class="step"><div class="n">3</div><div class="txt">Derivada respecto a \(x\): <span class="math">\(A'(x)=2400-4x\)</span></div></div>
+      <div class="step"><div class="n">4</div><div class="txt">Punto crítico: <span class="math">\(A'(x)=0 \Rightarrow 2400-4x=0\)</span> &nbsp;→&nbsp; <span class="math result">\(x=600\)</span></div></div>
+      <div class="step"><div class="n">5</div><div class="txt">Prueba de la segunda derivada: <span class="math">\(A''(x)=-4&lt;0\)</span> para todo \(x\), así que la curva es cóncava y \(x=600\) produce un <strong>máximo global</strong>.</div></div>
+      <div class="conclusion"><strong>Conclusión:</strong> Con <span class="math">\(x=600\)</span>: &nbsp;<span class="math result">\(L=1200\,\mathrm{m}\)</span> &nbsp;y&nbsp; <span class="math result">\(A_{\max}=720\,000\,\mathrm{m}^2\)</span>.</div>
     </div>
   </div>
 
