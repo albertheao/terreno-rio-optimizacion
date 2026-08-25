@@ -12,9 +12,12 @@
     --grid-line: #D4E1E5;
     --ink: #12324A;
     --ink-soft: #526B79;
-    --river: #0B6380;
-    --river-deep: #084B61;
-    --river-light: #A9D8E8;
+    --river: #0057B8;
+    --river-deep: #003F86;
+    --river-light: #D9EAFE;
+    --turquoise: #008C95;
+    --orange: #E06B16;
+    --violet: #7357B8;
     --field: #8FBF87;
     --field-dark: #5D8C55;
     --fence: #3E4C35;
@@ -126,8 +129,8 @@
     margin-top: 3px;
   }
   .kpi .note{ font-size: 11.5px; color: var(--ink-soft); margin-top: 2px; }
-  .kpi.up{ border-color: var(--field-dark); }
-  .kpi.down{ border-color: var(--warn); }
+  .kpi.up{ border-color: var(--turquoise); background:#F1FBFB; }
+  .kpi.down{ border-color: var(--orange); background:#FFF7F0; }
   .kpi.flat{ border-color: var(--gold); }
 
   .controls{
@@ -151,7 +154,7 @@
     font-family:'IBM Plex Mono', monospace; color: var(--ink); font-weight:600;
   }
   input[type=range]{
-    width: 100%; accent-color: var(--river); height: 20px;
+    width: 100%; accent-color: var(--gold); height: 20px;
   }
   input[type=number]{
     font-family:'IBM Plex Mono', monospace;
@@ -179,10 +182,10 @@
     font-size: 12.5px;
     padding: 9px 12px;
     border-radius: 8px;
-    background: #E9F5E7; color: var(--field-dark);
+    background: #F1FBFB; color: var(--turquoise);
     margin-top: 12px;
   }
-  .status-line.bad{ background: #FBE7E5; color: var(--warn); }
+  .status-line.bad{ background: #FFF7F0; color: var(--orange); }
 
   .derivation{
     background: var(--panel);
@@ -361,7 +364,7 @@
 
     // river
     const riverGrad = ctx.createLinearGradient(0,0,0,riverH);
-    riverGrad.addColorStop(0, '#4FA8CB');
+    riverGrad.addColorStop(0, '#4D9DE0');
     riverGrad.addColorStop(1, getVar('--river'));
     ctx.fillStyle = riverGrad;
     ctx.fillRect(0,0,w,riverH);
@@ -575,13 +578,13 @@
     const dxw = 130;
     const p1 = toC(clamp(xv-dxw,0,XMAX), A - dA*dxw);
     const p2 = toC(clamp(xv+dxw,0,XMAX), A + dA*dxw);
-    const tColor = Math.abs(dA) < 20 ? getVar('--gold-deep') : (dA>0 ? getVar('--field-dark') : getVar('--warn'));
+    const tColor = Math.abs(dA) < 20 ? getVar('--gold-deep') : (dA>0 ? getVar('--turquoise') : getVar('--orange'));
     ctx.beginPath(); ctx.moveTo(p1[0],p1[1]); ctx.lineTo(p2[0],p2[1]);
     ctx.strokeStyle = tColor; ctx.lineWidth = 2.5;
     ctx.stroke();
 
     ctx.beginPath(); ctx.arc(cx,cy,6,0,Math.PI*2);
-    ctx.fillStyle = getVar('--ink'); ctx.fill();
+    ctx.fillStyle = getVar('--violet'); ctx.fill();
     ctx.strokeStyle = '#fff'; ctx.lineWidth = 2; ctx.stroke();
   }
 
